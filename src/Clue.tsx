@@ -15,7 +15,7 @@ interface ClueWrapperProps {
 const ClueWrapper = styled.div.attrs<ClueWrapperProps>((props) => ({
   className: `clue${
     props.complete ? (props.correct ? ' correct' : ' incorrect') : ''
-  }`,
+  }${props.highlight ? ' selected' : ''}`,
 }))<ClueWrapperProps>`
   cursor: default;
   background-color: ${(props) =>
