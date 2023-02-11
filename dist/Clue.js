@@ -43,7 +43,7 @@ const prop_types_1 = __importDefault(require("prop-types"));
 const styled_components_1 = __importStar(require("styled-components"));
 const context_1 = require("./context");
 const ClueWrapper = styled_components_1.default.div.attrs((props) => ({
-    className: `clue sup ${props.complete ? (props.correct ? ' correct' : ' incorrect') : ''}${props.highlight ? ' selected' : ''}`,
+    className: `clue${props.complete ? (props.correct ? ' correct' : ' incorrect') : ''}${props.highlight ? ' selected' : ''}`,
 })) `
   cursor: default;
   background-color: ${(props) => props.highlight ? props.highlightBackground : 'transparent'};

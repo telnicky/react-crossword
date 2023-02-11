@@ -13,7 +13,7 @@ interface ClueWrapperProps {
 }
 
 const ClueWrapper = styled.div.attrs<ClueWrapperProps>((props) => ({
-  className: `clue sup ${
+  className: `clue${
     props.complete ? (props.correct ? ' correct' : ' incorrect') : ''
   }${props.highlight ? ' selected' : ''}`,
 }))<ClueWrapperProps>`
