@@ -279,6 +279,12 @@ export interface CrosswordProviderImperative {
   focus: () => void;
 
   /**
+   * Navigates to next clue. When previous is `true` it will navigate to the
+   * previous clue.
+   */
+  nextClue: (previous?: boolean) => void;
+
+  /**
    * Resets the entire crossword; clearing all answers in the grid and
    * also any persisted data.
    */

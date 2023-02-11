@@ -109,6 +109,7 @@ const Crossword = react_1.default.forwardRef((_a, ref) => {
          * Sets focus to the crossword component.
          */
         focus: () => { var _a; return (_a = providerRef.current) === null || _a === void 0 ? void 0 : _a.focus(); },
+        nextClue: (previous) => { var _a; return (_a = providerRef.current) === null || _a === void 0 ? void 0 : _a.nextClue(previous); },
         /**
          * Resets the entire crossword; clearing all answers in the grid and
          * also any persisted data.

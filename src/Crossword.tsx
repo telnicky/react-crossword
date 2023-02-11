@@ -100,6 +100,8 @@ const Crossword = React.forwardRef<CrosswordImperative, CrosswordProps>(
          */
         focus: () => providerRef.current?.focus(),
 
+        nextClue: (previous) => providerRef.current?.nextClue(previous),
+
         /**
          * Resets the entire crossword; clearing all answers in the grid and
          * also any persisted data.
