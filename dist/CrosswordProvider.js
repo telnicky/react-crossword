@@ -390,6 +390,24 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
         setCellCharacter(focusedRow, focusedCol, char.toUpperCase());
         moveForward();
     }, [focusedRow, focusedCol, setCellCharacter, moveForward]);
+    const nextClue = (0, react_1.useCallback)((previous) => {
+        if (!clues)
+            return;
+        const delta = previous ? -1 : 1;
+        const nextClueIndex = clues[currentDirection].findIndex((clue) => clue.number === currentNumber) + delta;
+        if (nextClueIndex >= clues[currentDirection].length ||
+            nextClueIndex === -1) {
+            const otherDirIndex = previous
+                ? clues[(0, util_1.otherDirection)(currentDirection)].length - 1
+                : 0;
+            const next = clues[(0, util_1.otherDirection)(currentDirection)][otherDirIndex];
+            moveTo(next.row, next.col, (0, util_1.otherDirection)(currentDirection));
+        }
+        else {
+            const next = clues[currentDirection][nextClueIndex];
+            moveTo(next.row, next.col);
+        }
+    }, [clues, currentDirection, currentNumber, moveTo]);
     // We use the keydown event for control/arrow keys, but not for textual
     // input, because it's hard to suss out when a key is "regular" or not.
     const handleInputKeyDown = (0, react_1.useCallback)((event) => {
@@ -418,23 +436,7 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
             // move to the next/last entry, switching directions if necessary
             case 'Enter':
             case 'Tab': {
-                if (!clues)
-                    break;
-                const delta = event.shiftKey ? -1 : 1;
-                const nextClueIndex = clues[currentDirection].findIndex((clue) => clue.number === currentNumber) + delta;
-                let nextClue;
-                if (nextClueIndex >= clues[currentDirection].length ||
-                    nextClueIndex === -1) {
-                    const otherDirIndex = event.shiftKey
-                        ? clues[(0, util_1.otherDirection)(currentDirection)].length - 1
-                        : 0;
-                    nextClue = clues[(0, util_1.otherDirection)(currentDirection)][otherDirIndex];
-                    moveTo(nextClue.row, nextClue.col, (0, util_1.otherDirection)(currentDirection));
-                }
-                else {
-                    nextClue = clues[currentDirection][nextClueIndex];
-                    moveTo(nextClue.row, nextClue.col);
-                }
+                nextClue(event.shiftKey);
                 break;
             }
             case ' ':
@@ -628,6 +630,7 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
          * Sets focus to the crossword component.
          */
         focus,
+        nextClue,
         /**
          * Resets the entire crossword; clearing all answers in the grid and
          * also any persisted data.
