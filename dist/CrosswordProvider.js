@@ -715,6 +715,7 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
         setCellCharacter,
         storageKey,
         useStorage,
+        nextClue,
     ]);
     const crosswordContext = (0, react_1.useMemo)(() => ({
         rows,

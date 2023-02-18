@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AnswerTuple, CluesInput, Direction, EnhancedProps } from './types';
+import { AnswerTuple, CluesInput, Direction, EnhancedProps, CellData } from './types';
 export declare const crosswordProviderPropTypes: {
     /**
      * clue/answer data; see <a
@@ -216,7 +216,7 @@ export interface CrosswordProviderImperative {
      * Navigates to next clue. When previous is `true` it will navigate to the
      * previous clue.
      */
-    nextClue: (previous?: boolean) => void;
+    nextClue: (previous?: boolean) => boolean | CellData | undefined;
     /**
      * Resets the entire crossword; clearing all answers in the grid and
      * also any persisted data.
