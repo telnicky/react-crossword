@@ -688,6 +688,7 @@ const CrosswordProvider = React.forwardRef<
             (clue) => clue.number === currentNumber
           ) + delta;
 
+        console.log('CurrentNumber:', currentNumber, typeof currentNumber);
         console.log(
           'Delta:',
           delta,

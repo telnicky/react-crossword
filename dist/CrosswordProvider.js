@@ -397,6 +397,7 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
         }
         const delta = previous ? -1 : 1;
         const nextClueIndex = clues[currentDirection].findIndex((clue) => clue.number === currentNumber) + delta;
+        console.log('CurrentNumber:', currentNumber, typeof currentNumber);
         console.log('Delta:', delta, 'nextClueIndex:', nextClueIndex, 'Clues:', clues);
         if (nextClueIndex >= clues[currentDirection].length ||
             nextClueIndex === -1) {
