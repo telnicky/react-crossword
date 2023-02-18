@@ -392,13 +392,11 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
     }, [focusedRow, focusedCol, setCellCharacter, moveForward]);
     const nextClue = (0, react_1.useCallback)((previous) => {
         if (!clues) {
-            console.log('No Clues');
-            return;
+            return false;
         }
         const delta = previous ? -1 : 1;
         const nextClueIndex = clues[currentDirection].findIndex((clue) => clue.number === currentNumber) + delta;
-        console.log('CurrentNumber:', currentNumber, typeof currentNumber);
-        console.log('Delta:', delta, 'nextClueIndex:', nextClueIndex, 'Clues:', clues);
+        console.log('CurrentNumber:', currentNumber);
         if (nextClueIndex >= clues[currentDirection].length ||
             nextClueIndex === -1) {
             const otherDirIndex = previous
@@ -407,13 +405,11 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
             const next = clues[(0, util_1.otherDirection)(currentDirection)][otherDirIndex];
             console.log('otherDirIndex', otherDirIndex);
             console.log('next', next);
-            moveTo(next.row, next.col, (0, util_1.otherDirection)(currentDirection));
+            return moveTo(next.row, next.col, (0, util_1.otherDirection)(currentDirection));
         }
-        else {
-            const next = clues[currentDirection][nextClueIndex];
-            console.log('else next', next);
-            moveTo(next.row, next.col);
-        }
+        const next = clues[currentDirection][nextClueIndex];
+        console.log('else next', next);
+        return moveTo(next.row, next.col);
     }, [clues, currentDirection, currentNumber, moveTo]);
     // We use the keydown event for control/arrow keys, but not for textual
     // input, because it's hard to suss out when a key is "regular" or not.
