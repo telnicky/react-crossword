@@ -677,13 +677,25 @@ const CrosswordProvider = React.forwardRef<
 
     const nextClue = useCallback(
       (previous: boolean | undefined) => {
-        if (!clues) return;
+        if (!clues) {
+          console.log('No Clues');
+          return;
+        }
 
         const delta = previous ? -1 : 1;
         const nextClueIndex =
           clues[currentDirection].findIndex(
             (clue) => clue.number === currentNumber
           ) + delta;
+
+        console.log(
+          'Delta:',
+          delta,
+          'nextClueIndex:',
+          nextClueIndex,
+          'Clues:',
+          clues
+        );
 
         if (
           nextClueIndex >= clues[currentDirection].length ||
@@ -693,9 +705,12 @@ const CrosswordProvider = React.forwardRef<
             ? clues[otherDirection(currentDirection)].length - 1
             : 0;
           const next = clues[otherDirection(currentDirection)][otherDirIndex];
+          console.log('otherDirIndex', otherDirIndex);
+          console.log('next', next);
           moveTo(next.row, next.col, otherDirection(currentDirection));
         } else {
           const next = clues[currentDirection][nextClueIndex];
+          console.log('else next', next);
           moveTo(next.row, next.col);
         }
       },
