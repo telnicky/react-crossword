@@ -396,19 +396,15 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
         }
         const delta = previous ? -1 : 1;
         const nextClueIndex = clues[currentDirection].findIndex((clue) => clue.number === currentNumber) + delta;
-        console.log('CurrentNumber:', currentNumber);
         if (nextClueIndex >= clues[currentDirection].length ||
             nextClueIndex === -1) {
             const otherDirIndex = previous
                 ? clues[(0, util_1.otherDirection)(currentDirection)].length - 1
                 : 0;
             const next = clues[(0, util_1.otherDirection)(currentDirection)][otherDirIndex];
-            console.log('otherDirIndex', otherDirIndex);
-            console.log('next', next);
             return moveTo(next.row, next.col, (0, util_1.otherDirection)(currentDirection));
         }
         const next = clues[currentDirection][nextClueIndex];
-        console.log('else next', next);
         return moveTo(next.row, next.col);
     }, [clues, currentDirection, currentNumber, moveTo]);
     // We use the keydown event for control/arrow keys, but not for textual

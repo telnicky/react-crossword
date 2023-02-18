@@ -687,8 +687,6 @@ const CrosswordProvider = React.forwardRef<
             (clue) => clue.number === currentNumber
           ) + delta;
 
-        console.log('CurrentNumber:', currentNumber);
-
         if (
           nextClueIndex >= clues[currentDirection].length ||
           nextClueIndex === -1
@@ -697,13 +695,10 @@ const CrosswordProvider = React.forwardRef<
             ? clues[otherDirection(currentDirection)].length - 1
             : 0;
           const next = clues[otherDirection(currentDirection)][otherDirIndex];
-          console.log('otherDirIndex', otherDirIndex);
-          console.log('next', next);
           return moveTo(next.row, next.col, otherDirection(currentDirection));
         }
 
         const next = clues[currentDirection][nextClueIndex];
-        console.log('else next', next);
         return moveTo(next.row, next.col);
       },
       [clues, currentDirection, currentNumber, moveTo]
