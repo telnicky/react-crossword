@@ -61,7 +61,7 @@ function Clue(_a) {
         event.preventDefault();
         handleClueSelected(direction, number);
     }, [direction, number, handleClueSelected]);
-    return ((0, jsx_runtime_1.jsxs)(ClueWrapper, Object.assign({ highlightBackground: highlightBackground, highlight: focused && direction === selectedDirection && number === selectedNumber, complete: complete, correct: correct }, props, { onClick: handleClick, "aria-label": `clue-${number}-${direction}` }, { children: [number, ": ", children] })));
+    return ((0, jsx_runtime_1.jsx)(ClueWrapper, Object.assign({ highlightBackground: highlightBackground, highlight: focused && direction === selectedDirection && number === selectedNumber, complete: complete, correct: correct }, props, { onClick: handleClick, "aria-label": `clue-${number}-${direction}` }, { children: children })));
 }
 exports.default = Clue;
 Clue.propTypes = {
