@@ -40,6 +40,10 @@ declare const crosswordPropTypes: {
     useStorage: PropTypes.Requireable<boolean>;
     storageKey: PropTypes.Requireable<string>;
     onAnswerComplete: PropTypes.Requireable<(...args: any[]) => any>;
+    /**
+     * Fills all the answers in the grid and calls the `onLoadedCorrect`
+     * callback with _**every**_ answer.
+     */
     onAnswerCorrect: PropTypes.Requireable<(...args: any[]) => any>;
     onCorrect: PropTypes.Requireable<(...args: any[]) => any>;
     onAnswerIncorrect: PropTypes.Requireable<(...args: any[]) => any>;
@@ -95,6 +99,10 @@ declare const Crossword: React.ForwardRefExoticComponent<Omit<PropTypes.InferPro
     useStorage: PropTypes.Requireable<boolean>;
     storageKey: PropTypes.Requireable<string>;
     onAnswerComplete: PropTypes.Requireable<(...args: any[]) => any>;
+    /**
+     * Fills all the answers in the grid and calls the `onLoadedCorrect`
+     * callback with _**every**_ answer.
+     */
     onAnswerCorrect: PropTypes.Requireable<(...args: any[]) => any>;
     onCorrect: PropTypes.Requireable<(...args: any[]) => any>;
     onAnswerIncorrect: PropTypes.Requireable<(...args: any[]) => any>;

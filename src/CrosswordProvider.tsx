@@ -284,6 +284,8 @@ export interface CrosswordProviderImperative {
    */
   nextClue: (previous?: boolean) => boolean | CellData | undefined;
 
+  handleInputKeyDown: React.KeyboardEventHandler<HTMLInputElement>;
+
   /**
    * Resets the entire crossword; clearing all answers in the grid and
    * also any persisted data.
@@ -1000,6 +1002,8 @@ const CrosswordProvider = React.forwardRef<
         focus,
 
         nextClue,
+
+        handleInputKeyDown,
 
         /**
          * Resets the entire crossword; clearing all answers in the grid and

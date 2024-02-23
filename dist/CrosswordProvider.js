@@ -630,6 +630,7 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
          */
         focus,
         nextClue,
+        handleInputKeyDown,
         /**
          * Resets the entire crossword; clearing all answers in the grid and
          * also any persisted data.

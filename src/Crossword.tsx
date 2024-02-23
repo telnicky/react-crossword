@@ -102,6 +102,9 @@ const Crossword = React.forwardRef<CrosswordImperative, CrosswordProps>(
 
         nextClue: (previous) => providerRef.current?.nextClue(previous),
 
+        handleInputKeyDown: (event) =>
+          providerRef.current?.handleInputKeyDown(event),
+
         /**
          * Resets the entire crossword; clearing all answers in the grid and
          * also any persisted data.
