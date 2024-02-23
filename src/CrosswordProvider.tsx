@@ -1088,6 +1088,7 @@ const CrosswordProvider = React.forwardRef<
         setGuess: (row: number, col: number, guess: string) => {
           // REVIEW: should we force-case this?
           setCellCharacter(row, col, guess.toUpperCase());
+          moveForward();
         },
       }),
       [
@@ -1099,6 +1100,7 @@ const CrosswordProvider = React.forwardRef<
         storageKey,
         useStorage,
         nextClue,
+        moveForward,
       ]
     );
 

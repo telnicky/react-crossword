@@ -702,6 +702,7 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
         setGuess: (row, col, guess) => {
             // REVIEW: should we force-case this?
             setCellCharacter(row, col, guess.toUpperCase());
+            moveForward();
         },
     }), [
         clues,
@@ -712,6 +713,7 @@ const CrosswordProvider = react_1.default.forwardRef(({ data, theme, onAnswerCom
         storageKey,
         useStorage,
         nextClue,
+        moveForward,
     ]);
     const crosswordContext = (0, react_1.useMemo)(() => ({
         rows,
