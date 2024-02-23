@@ -22,12 +22,13 @@ declare const CrosswordGridPropTypes: {
          * background on the active clue  */
         highlightBackground: PropTypes.Requireable<string>;
     }>>;
+    readOnly: PropTypes.Requireable<boolean>;
 };
 export type CrosswordGridProps = InferProps<typeof CrosswordGridPropTypes>;
 /**
  * The rendering component for the crossword grid itself.
  */
-declare function CrosswordGrid({ theme }: CrosswordGridProps): JSX.Element;
+declare function CrosswordGrid({ theme, readOnly }: CrosswordGridProps): JSX.Element;
 declare namespace CrosswordGrid {
     var propTypes: {
         /** presentation values for the crossword; these override any values coming from a parent ThemeProvider context. */
@@ -51,9 +52,11 @@ declare namespace CrosswordGrid {
              * background on the active clue  */
             highlightBackground: PropTypes.Requireable<string>;
         }>>;
+        readOnly: PropTypes.Requireable<boolean>;
     };
     var defaultProps: {
         theme: null;
+        readOnly: boolean;
     };
 }
 export default CrosswordGrid;

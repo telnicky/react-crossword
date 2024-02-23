@@ -62,6 +62,7 @@ const CrosswordGridPropTypes = {
      * background on the active clue  */
     highlightBackground: PropTypes.string,
   }),
+  readOnly: PropTypes.bool,
 };
 
 export type CrosswordGridProps = InferProps<typeof CrosswordGridPropTypes>;
@@ -76,7 +77,7 @@ export type CrosswordGridProps = InferProps<typeof CrosswordGridPropTypes>;
 /**
  * The rendering component for the crossword grid itself.
  */
-export default function CrosswordGrid({ theme }: CrosswordGridProps) {
+export default function CrosswordGrid({ theme, readOnly }: CrosswordGridProps) {
   const {
     rows,
     cols,
@@ -234,6 +235,7 @@ export default function CrosswordGrid({ theme }: CrosswordGridProps) {
               spellCheck="false"
               autoCorrect="off"
               style={inputStyle}
+              readOnly={readOnly || undefined}
             />
           </div>
         </GridWrapper>
@@ -246,4 +248,5 @@ CrosswordGrid.propTypes = CrosswordGridPropTypes;
 
 CrosswordGrid.defaultProps = {
   theme: null,
+  readOnly: false,
 };

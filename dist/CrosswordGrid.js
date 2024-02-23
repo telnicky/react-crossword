@@ -75,6 +75,7 @@ const CrosswordGridPropTypes = {
          * background on the active clue  */
         highlightBackground: prop_types_1.default.string,
     }),
+    readOnly: prop_types_1.default.bool,
 };
 // export interface CrosswordGridImperative {
 //   /**
@@ -85,7 +86,7 @@ const CrosswordGridPropTypes = {
 /**
  * The rendering component for the crossword grid itself.
  */
-function CrosswordGrid({ theme }) {
+function CrosswordGrid({ theme, readOnly }) {
     const { rows, cols, gridData, handleInputKeyDown, handleInputChange, handleCellClick, handleInputClick, registerFocusHandler, focused, selectedPosition: { row: focusedRow, col: focusedCol }, selectedDirection: currentDirection, selectedNumber: currentNumber, } = (0, react_1.useContext)(context_1.CrosswordContext);
     const inputRef = (0, react_1.useRef)(null);
     const contextTheme = (0, react_1.useContext)(styled_components_1.ThemeContext);
@@ -165,11 +166,12 @@ function CrosswordGrid({ theme }) {
                                         !!currentNumber &&
                                         cellData[currentDirection] === currentNumber, onClick: handleCellClick }, `R${row}C${col}`)) : undefined))] })), (0, jsx_runtime_1.jsx)("input", { ref: inputRef, "aria-label": "crossword-input", type: "text", onClick: handleInputClick, onKeyDown: handleInputKeyDown, onChange: handleInputChange, value: "", 
                             // onInput={this.handleInput}
-                            autoComplete: "off", spellCheck: "false", autoCorrect: "off", style: inputStyle })] })) }) })) })));
+                            autoComplete: "off", spellCheck: "false", autoCorrect: "off", style: inputStyle, readOnly: readOnly || undefined })] })) }) })) })));
 }
 exports.default = CrosswordGrid;
 CrosswordGrid.propTypes = CrosswordGridPropTypes;
 CrosswordGrid.defaultProps = {
     theme: null,
+    readOnly: false,
 };
 //# sourceMappingURL=CrosswordGrid.js.map
